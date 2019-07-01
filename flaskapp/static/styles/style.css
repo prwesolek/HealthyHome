@@ -1,0 +1,154 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #add8e6;
+    font-size: 100%;
+}
+
+h1 {
+      color: blue;
+      text-align: center;
+      font-size: 300%
+    }
+
+h2 {
+        color: blue;
+      }
+
+
+.title1 p{
+  text-align: center;
+  color:blue;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+
+.title_left{
+  float: left;
+  width:66%;
+  font-size:200%;
+  color:blue;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 0px;
+}
+.title_right{
+  float:left;
+  width:34%;
+  font-size:150%;
+  color:blue;
+  text-align:center;
+  font-weight: bold;
+}
+
+
+.weights h3 {
+font-size:100%;
+text-align: center;
+color: blue;
+}
+
+
+.submit{
+  text-align: center;
+}
+
+
+.column {
+  float: left;
+  width: 33.33%;
+  font-size:150%
+}
+.column p{
+  text-align: right;
+}
+.column h2{
+  text-align: center;
+}
+
+
+.columnm {
+  float: left;
+  width: 33.33%;
+  font-size:150%;
+}
+.columnm p{
+  text-align: right;
+}
+.columnm h2{
+  text-align: center;
+}
+
+
+.inputforms:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+.column1 {
+  float: left;
+  width: 40%;
+
+
+}
+.column2 {
+  float:left;
+  width:  60%;
+
+}
+
+
+.outsw {
+font-weight: bold;
+font-size: 100%;
+}
+.outsw p{
+font-size:150%;
+color:#469e34;
+}
+
+.outsw li{
+font-size:120%
+}
+
+
+.outsl {
+  font-weight: bold;
+  font-size: 100%;
+}
+.outsl p{
+  font-size: 150%;
+  color:#e37d59
+}
+.outsl li{
+font-size:120%
+}
+
+
+.outs p{
+  font-weight: bold;
+  font-size: 150%;
+}
+
+
+.notes {
+  font-size: 100%;
+}
+.notes p{
+font-weight:bold;
+
+}
+
+
+
+.clear{
+  clear:both;
+}
+
+#button {
+    width: 30em;
+     height: 10em;
+}

@@ -1,0 +1,24 @@
+For no-obesity the features are ['commute', 'density', 'safety'] and the number of neighbors is 900.
+For no-obesity the coiefficients are [0.12994544 0.05682771 0.1716755 ].
+For no-obesity the R2 score for test set is 0.7027267818584761.
+For no-obesity the MSE score for test set is 1.2081331359693805.
+
+.
+For no-asthma the features are ['density'] and the number of neighbors is 300.
+For no-asthma the coiefficients are [-0.02836697].
+For no-asthma the R2 score for test set is 0.8022260362056313.
+For no-asthma the MSE score for test set is 0.015914572217881798.
+
+.
+For no-mental-health-prob the features are ['commute', 'safety', 'density', 'pollution'] and the number of neighbors is 900.
+For no-mental-health-prob the coiefficients are [ 0.03464112  0.04571031 -0.01778313  0.00699211].
+For no-mental-health-prob the R2 score for test set is 0.5742692903193817.
+For no-mental-health-prob the MSE score for test set is 0.13470970873333155.
+
+.
+For sleep >7 the features are ['density', 'commute'] and the number of neighbors is 500.
+For sleep >7 the coiefficients are [-0.07217333 -0.15240359].
+For sleep >7 the R2 score for test set is 0.8254463716024513.
+For sleep >7 the MSE score for test set is 0.4832132364515497.
+
+.

@@ -1,0 +1,147 @@
+<html>
+<head>
+  <title>HealthyHome</title>
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link href="http://cdn.pydata.org/bokeh/release/bokeh-{{ bkversion }}.min.css" rel="stylesheet" type="text/css">
+  <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-{{ bkversion }}.min.css" rel="stylesheet" type="text/css">
+</head>
+   <body>
+
+       <h1 class="title"> HealthyHome </h1>
+       <div class="title1">
+       <p>Find a healthy place to live in your city</p>
+       </div>
+
+
+     <div class='inputforms'>
+       <div class='title_left'>
+         <p> Locations to compare</p>
+       </div>
+       <div class='title_right'>
+       </div>
+         <div class="clear">&nbsp;</div>
+         <!--uncomment for production-->
+    <form action = "http://philwesolek.com/" method = "POST" id='form1'>
+        <!--comment for production-->
+    <!-- <form action = "http://localhost:5000" method = "POST" id='form1'> -->
+
+     <div class='column'>
+
+         <p>House Number and Street <input type = "text" name = "name1" /></p>
+         <p>City <input type = "text" name = "city1" /></p>
+         <p>State (e.g. MA) <input type ="text" name = "state1" /></p>
+         <p> Expected Commute Time
+           <select name="commute1">
+          <option value="use-default">use census averages</option>
+          <option value="15">15 minutes</option>
+          <option value="30" selected>30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">60 minutes</option>
+          <option value="80">more than 60 minutes</option>
+        </select>
+         </p>
+    </div>
+    <div class='column'>
+       <p>House Number and Street <input type = "text" name = "name2" /></p>
+         <p>City <input type = "text" name = "city2" /></p>
+         <p>State (e.g. MA) <input type ="text" name = "state2" /></p>
+         <p> Expected Commute Time
+           <select name="commute2">
+          <option value="use-default" >use census averages</option>
+          <option value="15">15 minutes</option>
+          <option value="30" selected>30 minutes</option>
+          <option value="45">45 minutes</option>
+          <option value="60">60 minutes</option>
+          <option value="80">more than 60 minutes</option>
+        </select>
+    </div>
+
+    <div class='columnm'>
+      <div class='weights'>
+        <h3> Health concern importance</h3>
+      </div>
+
+
+      <p>Weight  <select name="obesity">
+     <option value=".1">not important</option>
+     <option value=".33" selected>somewhat important</option>
+     <option value="1">very important </option>
+      </select></p>
+      <p>Asthma  <select name="asthma">
+     <option value=".1">not important</option>
+     <option value=".33" selected>somewhat important</option>
+     <option value="1">very important </option>
+      </select></p>
+      <p>Sleep <select name="sleep">
+     <option value=".1">not important</option>
+     <option value=".33" selected>somewhat important</option>
+     <option value="1">very important </option>
+      </select></p>
+
+    </div>
+
+
+
+    <div class="clear">&nbsp;</div>
+
+    <div class='submit',id='button'>
+        <p><input type = "submit" value = "submit" /></p>
+      </div>
+  </form>
+
+  </div>
+<div class="clear">&nbsp;</div>
+<div class="title1">
+<p>{% print(error) %}</p>
+</div>
+
+<div class="inputforms">
+<div class="column1">
+  <div class='outsw'>
+    <p > Best Location: {% print(note1) %}</p>
+    <ul>
+      <li> HealthScore: {% print(hscore1) %}</li>
+      <li> Commute time: {% print(expected1)%} </li>
+
+    </ul>
+</div>
+<div class='outsl'>
+  <p > Second Location: {% print(note2) %}</p>
+  <ul>
+    <li> HealthScore: {% print(hscore2) %}</li>
+    <li> Commute time: {% print(expected2)%} </li>
+
+  </ul>
+</div>
+
+<div class='notes'>
+  <p > Notes</p>
+  <ul>
+    {{ note_offset|safe }}
+    <li> Output addresses are computed via Google's API. Check they match with your desired locations.</li>
+    <li> Environmental features can make negative contributions to the overall score.
+    E.g. commute time often gives a negative contribution, as it is negatively correlated with sleep time.</li>
+    <li>The underlying model consists of three multiple linear regressions.</li>
+    <li>Slides discussing the model and data sources can be found <a href="https://docs.google.com/presentation/d/1sv3qPBFLlrJ5h8Kuu7lopGlQsXpIYpLPQ7H5LpIYYG4/edit?usp=sharing" target="_blank">here</a>.</li>
+
+
+  </ul>
+</div>
+
+
+</div>
+
+<div class="column2">
+  <div class='outs'>
+  <p >{% print(title) %}</p>
+</div>
+  {{ fig_d1|safe }}
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-{{ bkversion }}.min.js"></script>
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-{{ bkversion }}.min.js"></script>
+  {{ fig_s1|safe}}
+</div>
+
+</div>
+<div class="clear">&nbsp;</div>
+   </body>
+</html>

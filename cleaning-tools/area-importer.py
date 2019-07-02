@@ -19,7 +19,7 @@ Area=[]
 Tract=[]
 lat=[]
 lon=[]
-for i in range(74133): #goes through every census tract; check the length is correct
+for i in range(74133): #goes through every census tract; the user should check the length is correct
     x=gdb.next() #increments the database
     Tract.append(x['properties']['GEOID']) #tract code
     lat.append(x['properties']['INTPTLAT']) #lat

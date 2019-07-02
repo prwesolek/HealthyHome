@@ -12,7 +12,16 @@
 
 <h2> Model Details </h2>
 
-<h3> Preprocessing and Engineering </h3>
+<h3> Feature Selection <h3>
+
+<h3> Smoothing <h3>
+
+<h3> Tuning and Linear Regressions </h3>
+
+<h3> Evaluation<h3>
+ 
+ <h3> Data and Preprocessing </h3>
+ <h4>Preprocessing</h4>
 <p>The processed data consists of three files: data/normalized-environmental.csv, data/normalized-health-and-environmental-train.csv, and data/normalized-health-and-environmental-test.csv. The processing steps are as follows:</p>
 <ul>
 <li><p> Compute population density</p></li>
@@ -25,17 +34,7 @@
 </ul>
 <p>The first five tasks are accomplished via merging-tools/merge-all-tracts.py. The last two are done via cleaning-tools/normalizer-splitter.py</p>
 
-<p> </p>
-
-
-<h3> Smoothing <h3>
-
-<h3> Tuning and Linear Regressions </h3>
-
-<h3> Evaluation<h3>
  
- <h3> A word on data sources </h3>
- <b> All cleaned data can be found in the data directory. </b>
  
  <h4> Health data</h4>
 The health data is taken from the CDC's  2018 <a href="https://www.cdc.gov/500cities/index.htm">500 Cities Project</a>. This data set has detailed health information on the census tract level for the 500 largest cities in the US. This data set covers approximately 26,000 census tracts. The data set can be downloaded as a csv <a href="https://catalog.data.gov/dataset/500-cities-local-data-for-better-health-fc759">here</a>. Due to the large size of this file, the raw data is not contained in the repo. The script which cleans the raw data is cleaning-tools/clean-500-cities.py

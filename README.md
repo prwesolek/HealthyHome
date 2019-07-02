@@ -13,10 +13,24 @@
 <h2> Model Details </h2>
 
 <h3> Preprocessing and Engineering </h3>
+<p>The processed data consists of three files: data/normalized-environmental.csv, data/normalized-health-and-environmental-train.csv, and data/normalized-health-and-environmental-test.csv. The processing steps are as follows:</p>
+<ul>
+<li><p> Compute population density</p></li>
+<li><p> Take log of population density, as it is log-normally distributed.</p></li>
+<li><p> Compute expected commute time. <p></li>
+<li> <p> Turn health issue rates into non-occurrence rates. For instance, percent obesity becomes percent non-obesity. </p></li>
+<li> <p>Turn crime rate into safety rate. </p></li>
+<li> <p> 50-50 test-train split for merged health and enironmental data.<p> </li>
+<li> <p>Make safety rate and population rate into T-scores. </p> </li>
+</ul>
+<p>The first five tasks are accomplished via merging-tools/merge-all-tracts.py. The last two are done via cleaning-tools/normalizer-splitter.py</p>
+
+<p> </p>
+
 
 <h3> Smoothing <h3>
 
-<h3> Linear Regressions </h3>
+<h3> Tuning and Linear Regressions </h3>
 
 <h3> Evaluation<h3>
  

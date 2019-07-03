@@ -4,11 +4,11 @@
 
 <h2> Summary </h2>
 
-<p>I built this project as a Health Data Science Fellow at <a href="https://www.insighthealthdata.com/"> Insight</a> during the Summer 2019 session. The output of the project is the webapp <a href="http://philwesolek.com/"> HealthyHome </a> which helps renters and homebuyers compare properties by how environmental features of a neighborhood (commute time, population density, and safety) affect health  (weight, asthma, and sleep time).</p>
+<p>I built this project as a Health Data Science Fellow at <a href="https://www.insighthealthdata.com/"> Insight</a> during the Summer 2019 session. The output of the project is the webapp <a href="http://philwesolek.com/"> HealthyHome </a> which helps renters and homebuyers compare properties by how environmental features of a neighborhood (commute time, population density, and safety) affect health  (weight, asthma, and sleep time > 7 hours).</p>
 
 <p>  The underlying mathematical model is a collection of linear regressions which predicts obesity rates, asthma rates, and percent of people reporting more than seven hours of sleep for a neighborhood from the average commute time, population density, and crime rate for the neighborhood.  A smoothing process via K-nearest Neighbors is used to account for confounding factors, and this process substantially improves the accuracy of the linear regressions. This smoothing process can be considered as a form of <a href="https://en.wikipedia.org/wiki/Convolution">convolution</a>. </p> 
 
-<p> The webapp takes as input two addresses, the user's expected commute time, and the user's level of concern about weight, asthma, or sleep time. The application then computes the census tracts for each address to obtain the environmental data, runs the linear regressions to compute non-obesity rate, non-asthma rate, and percent of people reporting a good night's sleep, and produces a HealthScore by taking a weighted sum of the outputs of the linear regressions, where the weights are given by the user's level of concern for the aforementioned health issues. The property with the higher HealthScore is reported to be the better property. The webapp  is built using flask and hosted on Amazon Web Services.</p>
+<p> The webapp takes as input two addresses, the user's expected commute time, and the user's level of concern about weight, asthma, or sleep time. The application then computes the census tracts for each address to obtain the environmental data, runs the linear regressions to compute non-obesity rate, non-asthma rate, and percent of people reporting more than seven hours of sleep, and produces a HealthScore by taking a weighted sum of the outputs of the linear regressions, where the weights are given by the level of importance assigned by the user for the aforementioned health concerns. The property with the higher HealthScore is reported to be the better property. The webapp  is built using flask and hosted on Amazon Web Services.</p>
 
 <p>The data is from 2010 or later and has a census tract level of granularity. (<a href="https://en.wikipedia.org/wiki/Census_tract">Census tracts</a> are geographic units for the US Census Bureau which are roughly equivalent to a neighborhood; they contain an average of 4,000 people.) </p>
 
@@ -19,7 +19,7 @@
 <h3> Feature Selection </h3>
  <p> The features used to predict each health issue rate are selected by running linear regressions to see how much each feature contributed. I additionally removed environmental features that intuitively should not predict the health issue in question.  The table below gives the environmental features used for each health issue. </p>
 
-<table style="width:100%" >
+<table style="width:100%" align="center">
   <tr>
     <th>Health Issue Rate</th>
     <th>Environmental Features</th> 
@@ -36,7 +36,7 @@
  
   </tr>
   <tr>
-    <td>good night's sleep</td>
+    <td>sleep more than 7 hours</td>
     <td>population density, expected commute time</td>
   </tr>
  
@@ -44,14 +44,14 @@
 
 
 <h3> Smoothing and linear regressions</h3>
-<p> Health issue rates for a neighborhood depend on factors well beyond basic environmental features of the neighborhood. However, environmental features do affect health issue rates, as well-noted in the public health literature.  To account for the many confounding factors, I replace the health issue rate for a given neighborhood with an average health issue rate for similar neighborhoods, via K-nearest Neighbors. This average health issue rate I call the <b>smoothed</b> rate. The details for each health issue rate follow </p>
+<p> Health issue rates for a neighborhood depend on factors well beyond basic environmental features of the neighborhood. However, environmental features do affect health, as well-noted in the public health literature.  To account for the many confounding factors, I replace the health issue rate for a given neighborhood with an average health issue rate for similar neighborhoods, via K-nearest Neighbors. This average health issue rate I call the <b>smoothed</b> rate. The details for each health issue rate follow </p>
 
 <ul>
 <li><b>non-asthma rate:</b> For a given neighborhood, the smoothed  rate is the average non-asthma rate for the 300 neighborhoods with most similar population density.  </li>
 
 <li><b>non-obesity rate:</b> For a given neighborhood, the smoothed rate is the average non-obesity rate for the 900 neighborhoods with most similar population density, expected commute time, and safety.  </li>
 
-<li><b>percentage reporting a good night's sleep:</b> For a given neighborhood, the smoothed rate is the average percentage reporting a good night's sleep for the 500 neighborhoods with most similar population density and expected commute time.  </li>
+<li><b>percent reporting more than 7 hours of sleep:</b> For a given neighborhood, the smoothed rate is the average percentage reporting more than seven hours of sleep for the 500 neighborhoods with most similar population density and expected commute time.  </li>
 
 </ul>
 
@@ -63,7 +63,7 @@
 
 <li>population density, expected commute time, and safety vs smoothed non-obesity rate.  </li>
 
-<li>population density and expected commute time vs smoothed percentage reporting a good night's sleep </li>
+<li>population density and expected commute time vs smoothed percentage reporting more than seven hours of sleep </li>
 
 </ul>
 <p> These regressions are run via model.py. This script outputs the details of these regressions in report/regression-parameters-model1-final-param.txt. This program also outputs data/weights.csv which contains the coefficients and intercepts to be used by the webapp.</p>

@@ -19,7 +19,7 @@
 <h3> Feature Selection </h3>
  <p> The features used to predict each health issue rate are selected by running linear regressions to see how much each feature contributed. I additionally removed environmental features that intuitively should not predict the health issue in question.  The table below gives the environmental features used for each health issue. </p>
 
-<table style="width:100%" border="1">
+<table style="width:100%" >
   <tr>
     <th>Health Issue Rate</th>
     <th>Environmental Features</th> 

@@ -16,7 +16,7 @@
 
 <h2> Model Details </h2>
 
-<h3> Feature Selection <h3>
+<h3> Feature Selection </h3>
  <p> The features used to predict each health issue rate are selected by running linear regressions to see how much each feature contributed. I additionally removed environmental features that intuitively should not predict the health issue in question.  The table below gives the environmental features used for each health issue. </p>
 
 <table style="width:100%" border="1">
@@ -43,7 +43,7 @@
 </table>
 
 
-<h3> Smoothing and linear regressions<h3>
+<h3> Smoothing and linear regressions</h3>
 <p> Health issue rates for a neighborhood depend on factors well beyond basic environmental features of the neighborhood. However, environmental features do affect health issue rates, as well-noted in the public health literature.  To account for the many confounding factors, I replace the health issue rate for a given neighborhood with an average health issue rate for similar neighborhoods, via K-nearest Neighbors. This average health issue rate I call the <b>smoothed</b> rate. The details for each health issue rate follow </p>
 
 <ul>
@@ -68,7 +68,7 @@
 </ul>
 <p> These regressions are run via model.py. This script outputs the details of these regressions in report/regression-parameters-model1-final-param.txt. This program also outputs data/weights.csv which contains the coefficients and intercepts to be used by the webapp.</p>
 
-<h3> Evaluation<h3>
+<h3> Evaluation</h3>
 
 <h3> HealthScore computation and the webapp</h3>
  

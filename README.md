@@ -98,7 +98,7 @@ The environmental data covers all census tracts (~74000) and comes from four sou
  </li>
 
  <li><p><b> 2010 US Census Summery File 1:</b> This database contains the data compiled by the 2010 census. This data set is large and best accessed via the census API. For more details on this data set see <a href="https://www.census.gov/data/datasets/2010/dec/summary-file-1.html">here</a></p>
- <p> This data set is used to obtain census tract population. The script cleaning-tools/census-data-importer.py accesses and downloads the relevant information via the python library requests. An API key is needed to access this file. One can obtain a key <a href="https://api.census.gov/data/key_signup.html">here</a>. </p>
+ <p> This data set is used to obtain census tract population. The script cleaning-tools/census-data-importer.py accesses and downloads the relevant information via the python library requests. An API key is needed to access this file; one can obtain a key <a href="https://api.census.gov/data/key_signup.html">here</a>. </p>
   </li>
       
     
@@ -124,7 +124,7 @@ The environmental data covers all census tracts (~74000) and comes from four sou
 
 <li> <b> mental health:</b> I would like to include the percentage of people reporting good mental health as a heath issue. The features I currently have are not descriptive enough to account for the many confounding factors, even with smoothing. </li>
 
-<li> <b> better data: </b> I would like to obtain crime data on the census tract level. Additionally, I would like to find better pollution data. I believe the current data that I have is normalized in such a way as to make it a poor predictor in my model. </li>
+<li> <b> better data: </b> I would like to obtain crime data on the census tract level; these data are currently at the county level. I would also like to find better pollution data. I believe the current pollution data that I have is normalized in such a way as to make it a poor predictor in my model. </li>
 
 <li> <b> more sophistication: </b> My current smoothing process is rather naive. I would like to either smooth by convolving my data points with a normal distribution or smooth by dynamically computing the number of neighbors to use for each data point.</li>
 

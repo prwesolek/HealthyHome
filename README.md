@@ -94,11 +94,12 @@ The environmental data covers all census tracts (~74000) and comes from four sou
   <p> This data set is used to obtain latitude and longitude, land area, and census tract code for every census tract in the US. The script cleaning-tools/area-importer.py extracts this information from the geodatabase. </p> </li>
 
  <li><p><b> 2016 US Census American Communities Survey:</b> This database gives detailed information on each census tract. This data set is large and best accessed via the census API. For more details on this data set see <a href="https://www.census.gov/programs-surveys/acs">here</a></p>
-    <p> This data set is used to obtain expected commute time. The script cleaning-tools/census-data-importer.py downloads the relevant information via the python library <a href="https://pypi.org/project/CensusData/">censusdata</a>. The script additionally requires the state codes used by the census. These codes are located in data/raw/all-tracts/state-geocodes-v2016.csv.</p> </li>
-    
+ <p> This data set is used to obtain expected commute time. The script cleaning-tools/census-data-importer.py downloads the relevant information via the python library <a href="https://pypi.org/project/CensusData/">censusdata</a>. The script additionally requires the state codes used by the census. These codes are located in data/raw/all-tracts/state-geocodes-v2016.csv.</p>
+ </li>
+
  <li><p><b> 2010 US Census Summery File 1:</b> This database contains the data compiled by the 2010 census. This data set is large and best accessed via the census API. For more details on this data set see <a href="https://www.census.gov/data/datasets/2010/dec/summary-file-1.html">here</a></p>
- 
-    <p> This data set is used to obtain census tract population. The script cleaning-tools/census-data-importer.py accesses and downloads the relevant information via the python library requests. An API key is needed to access this file. One can obtain a key <a href="https://api.census.gov/data/key_signup.html">here</a>. </p></li>
+ <p> This data set is used to obtain census tract population. The script cleaning-tools/census-data-importer.py accesses and downloads the relevant information via the python library requests. An API key is needed to access this file. One can obtain a key <a href="https://api.census.gov/data/key_signup.html">here</a>. </p>
+  </li>
       
     
 </ol>

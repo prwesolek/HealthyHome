@@ -37,7 +37,7 @@ def weight_computer(df,outfile,L):
     DD=({'no-asthma':(['density'],L[0]),
         'sleep >7':(['density','commute'],L[1]),
         'no-obesity':(['commute', 'safety','density'],L[2]),
-        'no-mental-health-prob':(['commute', 'safety','density','pollution'],L[3])}) 
+        'no-mental-health-prob':(['commute', 'safety','density'],L[3])}) 
 
     D1=({'no-asthma':'asthma','sleep >7':'sleep',
         'no-obesity':'obesity','no-mental-health-prob':'mental'}) #renaming dictionary

@@ -10,10 +10,10 @@ For no-asthma the R2 score for test set is 0.8022260362056313.
 For no-asthma the MSE score for test set is 0.015914572217881798.
 
 .
-For no-mental-health-prob the features are ['commute', 'safety', 'density', 'pollution'] and the number of neighbors is 900.
-For no-mental-health-prob the coiefficients are [ 0.03464112  0.04571031 -0.01778313  0.00699211].
-For no-mental-health-prob the R2 score for test set is 0.5742692903193817.
-For no-mental-health-prob the MSE score for test set is 0.13470970873333155.
+For no-mental-health-prob the features are ['commute', 'safety', 'density'] and the number of neighbors is 900.
+For no-mental-health-prob the coiefficients are [ 0.04388877  0.06133317 -0.03102889].
+For no-mental-health-prob the R2 score for test set is 0.5772296664875516.
+For no-mental-health-prob the MSE score for test set is 0.2097338227091342.
 
 .
 For sleep >7 the features are ['density', 'commute'] and the number of neighbors is 500.

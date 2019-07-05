@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from scipy.stats import pearsonr
+import seaborn as sns
 #%%
 def health_smoothing(df,health,cols,rad=10): #make smoothed column; see R2 plotter for details
     X=df[cols]
@@ -22,7 +23,8 @@ def health_smoothing(df,health,cols,rad=10): #make smoothed column; see R2 plott
     return df
 
 
-#%%
+#%% Plots of unsmoothed and smoothed asthma data
+    
 df_main=pd.read_csv("data/normalized-health-and-environmental-train.csv") #training data
 df=health_smoothing(df_main,'no-asthma',['density'],300) #make smoothed column
 
@@ -40,6 +42,7 @@ plt.xlabel('Population density T-score')
 plt.ylabel('% without asthma')
 plt.tight_layout()
 plt.savefig("visualization/plots/density-vs-no-asthma.png")
+bottom, top = plt.ylim()  # return the current ylim
 plt.show()
 plt.clf()
 print(np.corrcoef(X,Y)) #check correlation coief
@@ -55,9 +58,30 @@ plt.scatter( X,Y, marker= 'o', alpha=0.8)
 plt.xlabel('Population density T-score')
 plt.ylabel('smoothed % without asthma')
 plt.tight_layout()
+plt.ylim((bottom, top))   # set the ylim to bottom, top
 plt.savefig("visualization/plots/density-vs-smooth-no-asthma.png")
 plt.show()
 print(np.corrcoef(X,Y)) 
+
+#%% KDE plots 
+df_main=pd.read_csv("data/normalized-health-and-environmental-train.csv") #training data
+df=health_smoothing(df_main,'no-asthma',['density'],300) #make smoothed column
+
+plt.clf()
+
+X=df['density']
+Y=df['no-asthma']
+ax = sns.kdeplot(X, Y)
+plt.tight_layout()
+plt.savefig("visualization/plots/KDE-density-vs-no-asthma.png")
+
+plt.clf()
+X1=df['density']
+Y1=df['no-asthma-smooth']
+ax1 = sns.kdeplot(X1, Y1)
+plt.tight_layout()
+plt.savefig("visualization/plots/KDE-density-vs-smooth-no-asthma.png")
+
 #%% plots illustrating smoothing operation
 
 df_main=pd.read_csv("data/normalized-health-and-environmental-train.csv")

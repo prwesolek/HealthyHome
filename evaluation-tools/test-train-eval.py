@@ -46,7 +46,7 @@ def writer(outfilename,string):
 def evaluator(df_train,df_test,L,name):
     D=({'no-asthma':(['density'],L[0]),'sleep >7':(['density','commute'],L[1]),
                'no-obesity':(['commute', 'density','safety'],L[2]),
-               'no-mental-health-prob':(['commute', 'safety','density','pollution'],L[3])})
+               'no-mental-health-prob':(['commute', 'safety','density'],L[3])})
     
     df_train_smooth,DD=get_smoothed_cols(df_train,D) #makes smoothed columns and gives the dictionary of linear regression objects
     df_test_smooth,b=get_smoothed_cols(df_test,D)

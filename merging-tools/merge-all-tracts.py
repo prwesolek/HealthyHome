@@ -50,7 +50,7 @@ def pop_cleaner(df):
 
 def tract_formater(df):
     for i in range(len(df)):
-        raw=df_commute.loc[i,'TractFIPS'] #read in tract description
+        raw=df.loc[i,'TractFIPS'] #read in tract description
         
         n_state=raw.find('state') #get state code postion
         num_state=raw[n_state+6:n_state+8] #get state code
@@ -61,7 +61,7 @@ def tract_formater(df):
         n_tract=raw.find('tract') #get tract code position
         num_tract=raw[n_tract+6:n_tract+12] #get tract code
         
-        df_commute.at[i,'TractFIPS']=num_state+num_county+num_tract #get tract FIPS code
+        df.at[i,'TractFIPS']=num_state+num_county+num_tract #get tract FIPS code
     return df
 
 
@@ -251,3 +251,16 @@ df_merged=pd.merge(df_500,df_tracts,how='inner', on='TractFIPS')
 
 print("merge loss", len(df_500)-len(df_merged)) #check how much was lost
 df_merged.to_csv("data/non-normalized-health-and-environmental.csv",index=False)
+
+
+#%% make a file with income
+
+df_main=pd.read_csv("data/raw/all-tracts/merged-and-cleaned.csv")
+df_add=pd.read_csv("data/raw/all-tracts/per-capita-income.csv")
+
+
+df_main=make_tract_str(df_main)
+df_add=tract_formater(df_add)
+df_add.head()
+df_merged=pd.merge(df_main,df_add,how='inner',on='TractFIPS')
+df_merged.to_csv("data/raw/all-tracts/merged-and-cleaned-with-income.csv",index=False)

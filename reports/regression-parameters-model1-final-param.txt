@@ -1,28 +1,28 @@
 For no-obesity the features are ['commute', 'safety', 'density'] and the number of neighbors is 900.
-For no-obesity the coiefficients are [0.12994544 0.1716755  0.05682771].
-For no-obesity the intercept is 54.34746363628092.
-For no-obesity the R2 score is 0.7045859030678429.
-For no-obesity the MSE score is 1.195363043382361.
+For no-obesity the coiefficients are [0.12825307 0.17677874 0.06647973].
+For no-obesity the intercept is 53.7113359756564.
+For no-obesity the R2 score is 0.7014057086887067.
+For no-obesity the MSE score is 1.2885855533724746.
 
 .
 For no-asthma the features are ['density'] and the number of neighbors is 300.
-For no-asthma the coiefficients are [-0.02836697].
-For no-asthma the intercept is 91.71136868736754.
-For no-asthma the R2 score is 0.7853775748397986.
-For no-asthma the MSE score is 0.01727034246196471.
+For no-asthma the coiefficients are [-0.02926282].
+For no-asthma the intercept is 91.75831238747185.
+For no-asthma the R2 score is 0.8018766951177511.
+For no-asthma the MSE score is 0.01696554830127304.
 
 .
-For no-mental-health-prob the features are ['commute', 'safety', 'density'] and the number of neighbors is 900.
-For no-mental-health-prob the coiefficients are [ 0.04388877  0.06133317 -0.03102889].
-For no-mental-health-prob the intercept is 84.00807126815955.
-For no-mental-health-prob the R2 score is 0.5483914808953382.
-For no-mental-health-prob the MSE score is 0.2185972595782402.
+For no-mental-health-prob the features are ['commute', 'safety', 'density', 'pollution'] and the number of neighbors is 900.
+For no-mental-health-prob the coiefficients are [ 0.03671632  0.04716226 -0.01723103  0.00702343].
+For no-mental-health-prob the intercept is 84.0651998527956.
+For no-mental-health-prob the R2 score is 0.6146561442787238.
+For no-mental-health-prob the MSE score is 0.12438967536024369.
 
 .
 For sleep >7 the features are ['density', 'commute'] and the number of neighbors is 500.
-For sleep >7 the coiefficients are [-0.07217333 -0.15240359].
-For sleep >7 the intercept is 71.45873028853912.
-For sleep >7 the R2 score is 0.8856411895284388.
-For sleep >7 the MSE score is 0.30615458699188114.
+For sleep >7 the coiefficients are [-0.07330155 -0.15554615].
+For sleep >7 the intercept is 71.63079456065783.
+For sleep >7 the R2 score is 0.8464256317780325.
+For sleep >7 the MSE score is 0.43516788553307006.
 
 .

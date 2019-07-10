@@ -1,24 +1,24 @@
 For no-obesity the features are ['commute', 'density', 'safety'] and the number of neighbors is 900.
-For no-obesity the coiefficients are [0.12994544 0.05682771 0.1716755 ].
-For no-obesity the R2 score for test set is 0.7027267818584761.
-For no-obesity the MSE score for test set is 1.2081331359693805.
+For no-obesity the coiefficients are [0.12825307 0.06647973 0.17677874].
+For no-obesity the R2 score for test set is 0.7412371424350714.
+For no-obesity the MSE score for test set is 1.1299126874828374.
 
 .
 For no-asthma the features are ['density'] and the number of neighbors is 300.
-For no-asthma the coiefficients are [-0.02836697].
-For no-asthma the R2 score for test set is 0.8022260362056313.
-For no-asthma the MSE score for test set is 0.015914572217881798.
+For no-asthma the coiefficients are [-0.02926282].
+For no-asthma the R2 score for test set is 0.8341811848719767.
+For no-asthma the MSE score for test set is 0.01419927412873677.
 
 .
 For no-mental-health-prob the features are ['commute', 'safety', 'density'] and the number of neighbors is 900.
-For no-mental-health-prob the coiefficients are [ 0.04388877  0.06133317 -0.03102889].
-For no-mental-health-prob the R2 score for test set is 0.5772296664875516.
-For no-mental-health-prob the MSE score for test set is 0.2097338227091342.
+For no-mental-health-prob the coiefficients are [ 0.04733908  0.06245703 -0.02976737].
+For no-mental-health-prob the R2 score for test set is 0.588329116048784.
+For no-mental-health-prob the MSE score for test set is 0.20916856684890142.
 
 .
 For sleep >7 the features are ['density', 'commute'] and the number of neighbors is 500.
-For sleep >7 the coiefficients are [-0.07217333 -0.15240359].
-For sleep >7 the R2 score for test set is 0.8254463716024513.
-For sleep >7 the MSE score for test set is 0.4832132364515497.
+For sleep >7 the coiefficients are [-0.07330155 -0.15554615].
+For sleep >7 the R2 score for test set is 0.8727037386119938.
+For sleep >7 the MSE score for test set is 0.3590455812742294.
 
 .

@@ -24,6 +24,10 @@ def make_t_score(df,cols):
         df[col]=(df[col]*10)+50
     return df
 
+def scale_out_of_100(df,col):
+    m=df[col].max()
+    df[col]=(df[col]/m)*100
+    return df
 
 #%%
 cols=[ 'density', 'safety']
@@ -52,3 +56,15 @@ X_test=make_t_score(X_test,cols)
 
 X_train.to_csv("data/normalized-health-and-environmental-train.csv",index=False)
 X_test.to_csv("data/normalized-health-and-environmental-test.csv",index=False)
+
+
+#%%
+#all environmental data
+df_env=pd.read_csv("data/raw/all-tracts/merged-and-cleaned-with-income.csv")
+l_env=len(df_env)
+df_env.dropna(inplace=True)
+print("all environmental data loss",l_env-len(df_env))
+df_env=make_t_score(df_env,cols)
+
+
+df_env.to_csv("data/normalized-environmental-with-income.csv",index=False)

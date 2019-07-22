@@ -6,16 +6,16 @@
 
 <p>  The underlying mathematical model is a collection of linear regressions which predicts obesity rates, asthma rates, and percent of people reporting adequate sleep time for a neighborhood from the average commute time, population density, and crime rate for the neighborhood.  A smoothing process via K-nearest Neighbors is used to account for confounding factors, and this process substantially improves the accuracy of the linear regressions. This smoothing process can be considered as a form of <a href="https://en.wikipedia.org/wiki/Convolution">convolution</a>. </p> 
 
-<p> The webapp takes as input two addresses, the user's commute time, and the user's level of concern about weight, asthma, or sleep time. The application then computes the census tracts for each address to obtain the environmental data, runs the linear regressions to compute non-obesity rate, non-asthma rate, and percent of people reporting adequate sleep, and produces a HealthScore by taking a weighted sum of the outputs of the linear regressions, where the weights are given by the level of importance assigned by the user for the aforementioned health concerns. The property with the higher HealthScore is reported to be the better property. The webapp  is built using flask and hosted on Amazon Web Services. The webapp additionally uses Google's geocoding API; an API key can be obtained <a href="https://developers.google.com/maps/documentation/geocoding/start?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_315916118282-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+~+Geocoding+API-KWID_43700039136946657-kwd-335278985932-userloc_9001873&utm_term=KW_%2Bgeocoder%20%2Bapi-ST_%2Bgeocoder+%2Bapi&gclid=COmfluGynuMCFVndswodWiIK0Q" >here</a>. Your code must be input on line 55 in flaskapp/calculator1.py.</p>
+<p> The webapp takes as input two addresses, the user's commute time, and the user's level of concern about weight, asthma, or sleep time. The application then computes the census tracts for each address to obtain the environmental data, runs the linear regressions to compute non-obesity rate, non-asthma rate, and percent of people reporting adequate sleep, and produces a HealthScore by taking a weighted sum of the outputs of the linear regressions, where the weights are given by the level of importance assigned by the user for the aforementioned health concerns. The property with the higher HealthScore is reported to be the better property. The webapp  is built using flask and hosted on Amazon Web Services. The webapp additionally uses Google's geocoding API. An API key can be obtained <a href="https://developers.google.com/maps/documentation/geocoding/start?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_315916118282-ADGP_Hybrid+%7C+AW+SEM+%7C+SKWS+~+Geocoding+API-KWID_43700039136946657-kwd-335278985932-userloc_9001873&utm_term=KW_%2Bgeocoder%20%2Bapi-ST_%2Bgeocoder+%2Bapi&gclid=COmfluGynuMCFVndswodWiIK0Q" >here</a>; your code must be input on line 55 in flaskapp/calculator1.py.</p>
 
-<p>The data is from 2010 or later and has a census tract level of granularity; <a href="https://en.wikipedia.org/wiki/Census_tract">Census tracts</a> are geographic units for the US Census Bureau which are roughly equivalent to a neighborhood; they contain an average of 4,000 people. </p>
+<p>The data is from 2010 or later and has a census tract level of granularity. <a href="https://en.wikipedia.org/wiki/Census_tract">Census tracts</a> are geographic units for the US Census Bureau which are roughly equivalent to a neighborhood; they contain an average of 4,000 people. </p>
 
 <p> I did most of this work in Spyder, and the scripts reflect this choice. I translated some of the more interesting programs to jupyter notebooks.</p>
 
 <h2> Model Details </h2>
 
 <h3> Feature Selection </h3>
- <p> The features used to predict each health issue rate are selected by running linear regressions to see how much each feature contributed, and I additionally removed environmental features that intuitively should not predict the health issue in question; see the Feature-selection jupyter notebook for these regressions. In addition, these linear regressions point out that mental health does not depend linearly on the features, so I omitted this health issue. The table below gives the environmental features used for each health issue. </p>
+ <p> The features used to predict each health issue rate are selected by running linear regressions to see how much each feature contributed and by looking in the public health literature for previously established correlations; see the Feature-selection jupyter notebook for the regressions. These linear regressions additionally suggest that the percentage of people reporting good mental health does not depend linearly on the environmental features, so I omitted this health issue. The table below gives the environmental features used as predictors for each health issue. </p>
 
 <table style="width:100%" align="center">
   <tr>
@@ -42,7 +42,7 @@
 
 
 <h3> Smoothing and linear regressions</h3>
-<p> Health issue rates, e.g. asthma rates, for a neighborhood depend on factors well beyond basic environmental features of said neighborhood; the scatter plots and KDE plots in visualization/plots for the case of population density vs non-asthma rates illustrate this fact. Environmental features none-the-less affect health, so to account for the many confounding factors, I replace the health issue rate for a given neighborhood with an average health issue rate for similar neighborhoods, via K-nearest Neighbors. This average health issue rate I call the <b>smoothed</b> rate. The details follow. </p>
+<p> Health issue rates, e.g. asthma rates, for a neighborhood depend on factors well beyond basic environmental features; the scatter plots and KDE plots in visualization/plots for the case of population density vs non-asthma rates illustrate this fact. Environmental features none-the-less affect health, so to account for the many confounding factors, I replace the health issue rate for a given neighborhood with an average health issue rate for similar neighborhoods, via K-nearest Neighbors. This average health issue rate I call the <b>smoothed</b> rate. The details follow. </p>
 
 <ul>
 <li><b>non-asthma rate:</b> For a given neighborhood, the smoothed  rate is the average non-asthma rate for the 300 neighborhoods with most similar population density.  </li>
@@ -68,9 +68,9 @@
 <p> These regressions are run via model.py. This script outputs the details of these regressions in report/regression-parameters-model1-final-param.txt. This program also outputs data/weights.csv which contains the coefficients and intercepts to be used by the webapp.</p>
 
 <h3> Evaluation</h3>
-<p>  I reserved half the data for testing; a 50-50 test-train split seemed prudent as the smoothing process is in principle sensitive to the size of the data set in question. To evaluate the model, I smoothed the test set health issue rate values using the smoothing parameters determined from the train set. The linear models were then applied and the R2 scores calculated.  The model behaved well on the test set, with R2 values staying over .7. The plot visualization/plots/R2-Train-Test.png gives a side-by-side comparison of the R2 values. </p>
+<p>  I reserve half the data for testing; a 50-50 test-train split seems prudent as the smoothing process is in principle sensitive to the size of the data set in question. To evaluate the model, I smooth the test set health issue rate values using the smoothing parameters determined from the train set. The linear models are then applied and the R2 scores calculated.  The model behaves well on the test set, with R2 values staying over .7. The plot visualization/plots/R2-Train-Test.png gives a side-by-side comparison of the R2 values. </p>
 
-<p> R2 was used for evaluation as this metric measures the variance accounted for by the model. The ultimate goal is to distinguish locations based on their health issue rates. The model therefore needs to be able to detect differences between health issue rates, and so the model needs to be able to account for the variance between data points. </p>
+<p> R2 is used for evaluation as this metric measures the variance accounted for by the model. The ultimate goal is to distinguish locations based on their health issue rates. The model therefore needs to be able to detect differences between health issue rates, and so the model needs to be able to account for the variance between data points. </p>
 
 <p>The script evaluation-tools/test-train-eval.py performs the evaluation. This script builds the linear model from the training data, smooths the test data, and computes the R2 value for the predicted smoothed values for the test set data. A report titled reports/evaluation-model-1-test-final.txt is written. </p>
 
@@ -122,11 +122,13 @@ The environmental data covers all census tracts (~74000) and comes from four sou
 <ul>
 <li> <b> other features: </b> Health issue rates depend on many hidden variables, and to account for this, I would like to bring in more environmental features. Here are several ideas: number of grocery stores in neighborhood, number of parks in neighborhood, number of urgent care clinics in neighborhood, public transportation in neighborhood, <a href="https://www.walkscore.com/">WalkScore</a>, and <a href="http://howloud.com/">noise level</a>. </li>
 
-<li> <b> mental health:</b> I would like to include the percentage of people reporting good mental health as a heath issue. The features I currently have are not descriptive enough to account for the many confounding factors, even with smoothing. </li>
+<li> <b> mental health:</b> I would like to include the percentage of people reporting good mental health as a heath issue, even if this means moving to a non-linear model. </li>
 
 <li> <b> better data: </b> I would like to obtain crime data on the census tract level; these data are currently at the county level. I would also like to find better pollution data. I believe the current pollution data that I have is normalized in such a way as to make it a poor predictor in my model. </li>
 
-<li> <b> more sophistication: </b> My current smoothing process is rather naive. I would like to either smooth by convolving my data points with a normal distribution or smooth by dynamically computing the number of neighbors to use for each data point.</li>
+<li> <b> more sophistication: </b> My current smoothing process is rather naive. I would like to either smooth by convolving my data points with a normal distribution or smooth by dynamically computing the number of neighbors to use for each data point. I would also like to explore hierarchical linear models to account for random effects, such as the region of the United States.</li>
+
+<li> <b> better user interface: </b> I would like to add a feature allowing the user to input his or her work address so that the model can compute commute time.  </li>
 
 </ul>
 

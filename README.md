@@ -128,7 +128,10 @@ The environmental data covers all census tracts (~74000) and comes from four sou
 
 <li> <b> more sophistication: </b> My current smoothing process is rather naive. I would like to either smooth by convolving my data points with a normal distribution or smooth by dynamically computing the number of neighbors to use for each data point. I would also like to explore hierarchical linear models to account for random effects, such as the region of the United States.</li>
 
-<li> <b> better user interface: </b> I would like to add a feature allowing the user to input his or her work address so that the model can compute commute time.  </li>
+<li> <b> better user interface: </b> I would like to add a feature allowing the user to input his or her work address so that the model can compute commute time.
+</li>
 
+<li> <b> database: </b> Currently, the webapp must query a somewhat large csv file, which sits on the server. I would like to replace this file with a relational database.
+</li>
 </ul>
 
